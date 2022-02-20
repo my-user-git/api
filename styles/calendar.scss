@@ -118,7 +118,7 @@ input {
     line-height: 17px;
     font-weight: 400;
     color: $black;
-    background: url(/images/icon-place.svg) left center transparent no-repeat;
+    background: url(images/icon-place.svg) left center transparent no-repeat;
   }
 
   &__item-text {
@@ -138,7 +138,7 @@ input {
     color: $black;
     text-decoration: underline;
     word-break: break-all;
-    background: url(/images/icon-link.svg) left center transparent no-repeat;
+    background: url(images/icon-link.svg) left center transparent no-repeat;
   }
 
   &__item-wrap {
