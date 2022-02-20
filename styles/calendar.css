@@ -1,12 +1,12 @@
 @font-face {
   font-family: "TT Travels";
-  src: url("fonts/TTTravels-Regular.woff") format("woff");
+  src: url("../fonts/TTTravels-Regular.woff") format("woff");
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
   font-family: "TT Travels DemiBold";
-  src: url("fonts/TTTravels-DemiBold.woff") format("woff");
+  src: url("../fonts/TTTravels-DemiBold.woff") format("woff");
   font-weight: 600;
   font-style: normal;
 }
@@ -125,7 +125,7 @@ input {
   line-height: 17px;
   font-weight: 400;
   color: #000;
-  background: url(../images/icon-place.svg) left center transparent no-repeat;
+  background: url(images/icon-place.svg) left center transparent no-repeat;
 }
 .calendar__item-text {
   margin-bottom: 27px;
@@ -143,7 +143,7 @@ input {
   color: #000;
   text-decoration: underline;
   word-break: break-all;
-  background: url(../images/icon-link.svg) left center transparent no-repeat;
+  background: url(images/icon-link.svg) left center transparent no-repeat;
 }
 .calendar__item-wrap {
   display: flex;
