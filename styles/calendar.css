@@ -1,0 +1,291 @@
+@font-face {
+  font-family: "TT Travels";
+  src: url("/fonts/TTTravels-Regular.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "TT Travels DemiBold";
+  src: url("/fonts/TTTravels-DemiBold.woff") format("woff");
+  font-weight: 600;
+  font-style: normal;
+}
+/* fonts */
+/* colors */
+.calendar__item-in:hover {
+  transform: scale(1.05);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  font-family: "TT Travels", "Arial, sans-serif";
+  background-color: #fff;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  outline: none;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+picture {
+  display: inline-block;
+  height: 100%;
+  width: auto;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+
+button,
+input {
+  display: inline-block;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+/* section-calendar */
+.container {
+  max-width: 1724px;
+  margin: 50px auto 0 auto;
+  padding: 0 20px;
+}
+
+.calendar__in {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  flex-flow: row wrap;
+}
+.calendar__item-in {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: calc((100% - 57px*3) / 4);
+  height: auto;
+  margin-bottom: 50px;
+  padding: 25px 43px 39px 30px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.12);
+  transition: transform ease-in-out 0.5s;
+}
+.calendar__item-date {
+  margin-bottom: 19px;
+  font-family: "TT Travels DemiBold", "Arial, sans-serif";
+  font-size: 18px;
+  line-height: 22px;
+  font-weight: 500;
+  color: #000;
+}
+.calendar__item-logo {
+  width: auto;
+  height: 90px;
+  margin-bottom: 15px;
+}
+.calendar__item-ttl {
+  height: 100%;
+  margin-bottom: 15px;
+  font-family: "TT Travels DemiBold", "Arial, sans-serif";
+  font-size: 24px;
+  line-height: 29px;
+  font-weight: 500;
+  color: #000;
+}
+.calendar__item-place {
+  margin-bottom: 12px;
+  padding: 0 0 0 20px;
+  font-size: 14px;
+  line-height: 17px;
+  font-weight: 400;
+  color: #000;
+  background: url(/images/icon-place.svg) left center transparent no-repeat;
+}
+.calendar__item-text {
+  margin-bottom: 27px;
+  font-size: 16px;
+  line-height: 19px;
+  font-weight: 400;
+  color: #000;
+}
+.calendar__item-link {
+  margin-bottom: 25px;
+  padding: 0 0 0 20px;
+  font-size: 14px;
+  line-height: 17px;
+  font-weight: 400;
+  color: #000;
+  text-decoration: underline;
+  word-break: break-all;
+  background: url(/images/icon-link.svg) left center transparent no-repeat;
+}
+.calendar__item-wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+.calendar__item-ticket {
+  padding: 8px 20px;
+  font-family: "TT Travels DemiBold", "Arial, sans-serif";
+  font-size: 18px;
+  line-height: 22px;
+  font-weight: 500;
+  color: #fff;
+  background-color: #6B46D4;
+}
+.calendar__item-more {
+  font-family: "TT Travels DemiBold", "Arial, sans-serif";
+  font-size: 18px;
+  line-height: 22px;
+  font-weight: 500;
+  color: #6B46D4;
+  text-decoration: underline;
+}
+
+/* footer */
+.footer {
+  background-color: #262529;
+}
+.footer__content {
+  padding-top: 58px;
+  padding-bottom: 35px;
+}
+.footer__wrap {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.footer__list {
+  width: calc((100% - 40px) / 2);
+  margin-bottom: 55px;
+}
+.footer__logo {
+  width: calc((100% - 40px) / 2);
+}
+.footer__item {
+  margin-bottom: 25px;
+}
+.footer__item:nth-child(2) .footer__item_heading, .footer__item:nth-child(3) .footer__item_heading {
+  display: inline-block;
+}
+.footer__item_heading {
+  font-family: "TT Travels DemiBold", "Arial, sans-serif";
+  font-size: 18px;
+  line-height: 22px;
+  font-weight: 500;
+  color: #fff;
+}
+.footer__item_desc {
+  font-size: 18px;
+  line-height: 22px;
+  font-weight: 400;
+  color: #fff;
+}
+.footer__link {
+  font-size: 18px;
+  line-height: 22px;
+  font-weight: 400;
+  color: #fff;
+}
+.footer__bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.footer__month {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.footer__year {
+  font-family: "TT Travels DemiBold", "Arial, sans-serif";
+  font-size: 36px;
+  line-height: 43px;
+  font-weight: 500;
+  color: #fff;
+  letter-spacing: -0.05em;
+}
+
+@media (max-width: 1650px) {
+  .calendar__item-wrap {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .calendar__item-ticket {
+    margin-bottom: 15px;
+  }
+}
+@media (max-width: 1350px) {
+  .calendar__item-in {
+    width: calc((100% - 40px*2) / 3);
+  }
+  .calendar__item-ttl {
+    font-size: 20px;
+    line-height: 24px;
+  }
+}
+@media (max-width: 1024px) {
+  .calendar__item-wrap {
+    align-items: center;
+  }
+  .calendar__item-ticket {
+    width: 100%;
+    text-align: center;
+  }
+}
+@media (max-width: 768px) {
+  .calendar__item-in {
+    width: calc((100% - 40px) / 2);
+  }
+  .calendar__item-ttl {
+    font-size: 20px;
+    line-height: 24px;
+  }
+
+  .footer__list {
+    width: 100%;
+  }
+  .footer__logo {
+    position: absolute;
+    top: 0;
+    right: 0;
+    opacity: 0.5;
+  }
+}
+@media (max-width: 540px) {
+  .calendar__item-in {
+    width: 100%;
+  }
+  .calendar__item-ttl {
+    font-size: 20px;
+    line-height: 24px;
+  }
+}/*# sourceMappingURL=calendar.css.map */
