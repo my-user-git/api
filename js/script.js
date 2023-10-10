@@ -52,7 +52,7 @@
       const $footerrange = document.createElement('div');
       $footerrange.classList.add('footer__range');
 
-      $footerrange.innerHTML = '<input type="range" min="1" max="' + monthsArr.length + '" value="' + monthsArr.length / 2 + '" class="footer__slider" id="myRange">'
+      $footerrange.innerHTML = '<input type="range" min="1" max="' + monthsArr.length + '" value="1" class="footer__slider" id="myRange">'
       document.querySelector('.footer__bottom').append($footerrange);
 
       const $monthsList = document.createElement('ul');
@@ -72,19 +72,20 @@
         $changerange.addEventListener('change', (event) => {
           const arrRange = [];
           const monthNumber = event.target.value;
+
           let dateEvents = monthsArr[monthNumber - 1].month;
-          // console.log(monthsArr[]);
-          // initEvents(data);
+
 
           data.result.forEach(item => {
             let monthRange = item.date_range.split(' ');
             monthRange.forEach(monthRange => {
-              dateEvents = dateEvents.replace(/\ь$/, 'я');
-              // console.log(dateEvents);
+              console.log(dateEvents.slice(-1));
+              if (dateEvents.slice(-1) !== 'я') {
+                dateEvents = dateEvents.replace(/\ь$/, 'я');
+              }
               if ((monthRange.length >= 3 && monthRange.match(/[а-яёА-ЯЁ]/g)) && monthRange === dateEvents) {
                 // console.log(item);
                 arrRange.push(item);
-                console.log(arrRange);
               }
               calendarList.innerHTML = '';
               initEvents(arrRange);
