@@ -8,10 +8,94 @@
     'http://devtechconf.ru/2022'
   ];
   const calendarList = document.querySelector('.calendar__in');
+  const arrEvent = [];
+  let dateId = 0,
+    arrDate = {},
+    year;
 
   fetch('https://conf.ontico.ru/api/conferences/forCalendar.json').then(function (res) {
     return res.json();
   }).then(function (data) {
+    data.result.forEach(item => {
+      item = item.date_range.split(' ');
+      item.forEach(item => {
+        if (item.length === 4 && item.match(/\d+/g)) {
+          year = item;
+        }
+        if ((item.length >= 3) && item.match(/[а-яёА-ЯЁ]/g)) {
+          item = item.replace(/\я$/, 'ь');
+          arrDate = {
+            id: `${dateId}`,
+            month: `${item}`,
+            year: `${year}`
+          };
+          arrEvent.push(arrDate);
+          ++dateId;
+        }
+      })
+    })
+
+    // console.log(arrEvent);
+
+    monthRange();
+
+    function monthRange() {
+
+      let monthsArr = [];
+      arrEvent.forEach(x => {
+        // console.log(x.month);
+        if (!monthsArr.some(y => JSON.stringify(y.month) === JSON.stringify(x.month))) {
+          monthsArr.push(x);
+        }
+      })
+
+      const $footerrange = document.createElement('div');
+      $footerrange.classList.add('footer__range');
+
+      $footerrange.innerHTML = '<input type="range" min="1" max="' + monthsArr.length + '" value="' + monthsArr.length / 2 + '" class="footer__slider" id="myRange">'
+      document.querySelector('.footer__bottom').append($footerrange);
+
+      const $monthsList = document.createElement('ul');
+      $monthsList.classList.add('footer__months');
+
+      monthsArr.forEach(item => {
+        const $monthItem = document.createElement('li');
+        $monthItem.classList.add('footer__month');
+        $monthItem.textContent = item.month + ' ' + item.year;
+        $monthsList.append($monthItem);
+      })
+
+      $footerrange.append($monthsList);
+
+      function changeRange() {
+        const $changerange = document.querySelector('#myRange');
+        const arrRange = [];
+        $changerange.addEventListener('change', (event) => {
+          const monthNumber = event.target.value;
+          let dateEvents = monthsArr[monthNumber - 1].month;
+          // console.log(monthsArr[]);
+          // initEvents(data);
+
+          data.result.forEach(item => {
+            let monthRange = item.date_range.split(' ');
+            monthRange.forEach(monthRange => {
+              dateEvents = dateEvents.replace(/\ь$/, 'я');
+              // console.log(dateEvents);
+              if ((monthRange.length >= 3 && monthRange.match(/[а-яёА-ЯЁ]/g)) && monthRange === dateEvents) {
+                // console.log(item);
+                arrRange.push(item);
+                console.log(arrRange);
+              }
+
+              calendarList.innerHTML = '';
+              initEvents(arrRange);
+            })
+          })
+        });
+      }
+      changeRange();
+    }
+
     initEvents(data.result.filter(el => !ignoreList.includes(el.uri.trim())));
   }).catch(function (err) {
     return console.log(err);
@@ -24,17 +108,17 @@
   }
 
   function addItem(element) {
-    // var item = document.createElement('div');
-    var itemDate = document.createElement('div');
-    var itemIn = document.createElement('a');
-    var itemLogo = document.createElement('img');
-    var itemTtl = document.createElement('div');
-    var itemPlace = document.createElement('div');
-    var itemText = document.createElement('div');
-    var itemLink = document.createElement('div');
-    var itemWrap = document.createElement('div');
-    var itemTicket = document.createElement('div');
-    var itemMore = document.createElement('div');
+    // let item = document.createElement('div');
+    let itemDate = document.createElement('div');
+    let itemIn = document.createElement('a');
+    let itemLogo = document.createElement('img');
+    let itemTtl = document.createElement('div');
+    let itemPlace = document.createElement('div');
+    let itemText = document.createElement('div');
+    let itemLink = document.createElement('div');
+    let itemWrap = document.createElement('div');
+    let itemTicket = document.createElement('div');
+    let itemMore = document.createElement('div');
 
     itemWrap.className = 'calendar__item-wrap';
     itemDate.className = 'calendar__item-date';
@@ -82,3 +166,4 @@
     });
   }
 })();
+

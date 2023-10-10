@@ -1,6 +1,8 @@
+@import '_normalize.scss';
 @import '_fonts.scss';
 @import '_variable.scss';
 @import '_ui-kit.scss';
+@import '_slider.scss';
 
 
 * {
@@ -235,6 +237,12 @@ input {
     display: flex;
     justify-content: space-between;
     align-items: center;
+  }
+
+  &__bottom {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    column-gap: 91px;
   }
 
   &__year {
