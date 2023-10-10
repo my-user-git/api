@@ -69,8 +69,8 @@
 
       function changeRange() {
         const $changerange = document.querySelector('#myRange');
-        const arrRange = [];
         $changerange.addEventListener('change', (event) => {
+          const arrRange = [];
           const monthNumber = event.target.value;
           let dateEvents = monthsArr[monthNumber - 1].month;
           // console.log(monthsArr[]);
@@ -86,7 +86,6 @@
                 arrRange.push(item);
                 console.log(arrRange);
               }
-
               calendarList.innerHTML = '';
               initEvents(arrRange);
             })
