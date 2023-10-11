@@ -367,7 +367,7 @@ template {
 .footer__month {
   font-family: "TT Travels DemiBold", "Arial, sans-serif";
   font-size: 18px;
-  line-height: auto;
+  line-height: 1;
   font-weight: 500;
   color: #fff;
   text-transform: lowercase;
@@ -638,6 +638,14 @@ input {
   .calendar__item-ttl {
     font-size: 20px;
     line-height: 24px;
+  }
+  .footer__bottom {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    row-gap: 20px;
+  }
+  .footer__month {
+    font-size: 16px;
   }
 }
 @media (max-width: 1024px) {

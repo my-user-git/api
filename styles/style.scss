@@ -279,6 +279,18 @@ input {
       line-height: 24px;
     }
   }
+
+  .footer {
+    &__bottom {
+      grid-template-columns: 1fr;
+      grid-template-rows: auto;
+      row-gap: 20px;
+    }
+
+    &__month {
+      font-size: 16px;
+    }
+  }
 }
 
 @media (max-width: 1024px) {
