@@ -115,10 +115,13 @@ input {
   }
 
   &__item {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: flex-start;
+    // display: flex;
+    // flex-direction: column;
+    // justify-content: space-between;
+    // align-items: flex-start;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: .5fr min-content 1fr .6fr min-content min-content min-content;
     width: 100%;
     height: auto;
     padding: 25px 43px 39px 30px;
@@ -140,6 +143,10 @@ input {
     width: auto;
     height: 90px;
     margin-bottom: 15px;
+
+    &-link {
+      transition: opacity ease-in-out .3s;
+    }
   }
 
   &__item-ttl {

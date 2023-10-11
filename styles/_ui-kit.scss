@@ -1,6 +1,12 @@
 .calendar {
   &__item {
 
+    &-logo {
+      &-link:hover {
+        opacity: .7;
+      }
+    }
+
     &-link:hover {
       opacity: .7;
     }

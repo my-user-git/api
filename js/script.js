@@ -118,6 +118,7 @@
   function addItem(element) {
     let itemDate = document.createElement('p');
     let itemLi = document.createElement('li');
+    let itemLogoLink = document.createElement('a');
     let itemLogo = document.createElement('img');
     let itemTtl = document.createElement('h2');
     let itemPlace = document.createElement('div');
@@ -150,6 +151,10 @@
     itemMore.innerHTML = element.uri;
     itemMore.textContent = 'Подробнее';
 
+    itemLogoLink.className = 'calendar__item-logo-link';
+    itemLogoLink.setAttribute('href', element.uri);
+    itemLogoLink.target = '_blank';
+
     itemLogo.className = 'calendar__item-logo';
     itemLogo.src = element.logo;
     itemLogo.alt = `Лого ${element.name}`;
@@ -166,7 +171,8 @@
     }
     itemPlace.textContent = element.location;
 
-    appendChildren(itemLi, [itemDate, itemLogo, itemTtl, itemText, itemPlace, itemLink, itemWrap]);
+    appendChildren(itemLi, [itemDate, itemLogoLink, itemTtl, itemText, itemPlace, itemLink, itemWrap]);
+    appendChildren(itemLogoLink, [itemLogo]);
     appendChildren(itemWrap, [itemTicket, itemMore]);
 
     calendarList.appendChild(itemLi);

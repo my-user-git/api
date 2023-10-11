@@ -352,6 +352,9 @@ template {
 }
 /* fonts */
 /* colors */
+.calendar__item-logo-link:hover {
+  opacity: 0.7;
+}
 .calendar__item-link:hover {
   opacity: 0.7;
 }
@@ -534,10 +537,9 @@ input {
   gap: 3.6rem;
 }
 .calendar__item {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: flex-start;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 0.5fr min-content 1fr 0.6fr min-content min-content min-content;
   width: 100%;
   height: auto;
   padding: 25px 43px 39px 30px;
@@ -557,6 +559,9 @@ input {
   width: auto;
   height: 90px;
   margin-bottom: 15px;
+}
+.calendar__item-logo-link {
+  transition: opacity ease-in-out 0.3s;
 }
 .calendar__item-ttl {
   height: 100%;
