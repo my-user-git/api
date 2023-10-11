@@ -452,6 +452,37 @@ input {
   cursor: pointer;
 }
 
+/* loader */
+.calendar__loader {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 10;
+}
+.calendar__loader img {
+  display: block;
+  width: 36px;
+  height: 36px;
+  margin: 0 auto;
+}
+
+/* animation */
+@keyframes loader-anim {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.calendar__loader img {
+  animation: loader-anim 0.5s normal infinite linear;
+}
+
 /* section-calendar */
 .container {
   max-width: 1724px;
@@ -596,11 +627,6 @@ input {
   line-height: 22px;
   font-weight: 400;
   color: #fff;
-}
-.footer__bottom {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
 }
 .footer__month {
   display: flex;

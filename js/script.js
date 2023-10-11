@@ -16,6 +16,9 @@
   fetch('https://conf.ontico.ru/api/conferences/forCalendar.json').then(function (res) {
     return res.json();
   }).then(function (data) {
+    if (data) { //  убираем loader
+      document.querySelector('.calendar__loader').remove();
+    }
     data.result.forEach(item => {
       item = item.date_range.split(' '); /*разбиваем полученную строку даты на массив элементов по пробелу */
       item.forEach(item => {

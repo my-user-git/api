@@ -57,6 +57,44 @@ input {
   cursor: pointer;
 }
 
+/* loader */
+
+.calendar {
+  &__loader {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 10;
+
+    & img {
+      display: block;
+      width: 36px;
+      height: 36px;
+      margin: 0 auto;
+    }
+  }
+}
+
+/* animation */
+
+@keyframes loader-anim {
+  0% {
+    transform: rotate(0);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.calendar__loader img {
+  animation: loader-anim .5s normal infinite linear;
+}
+
 
 /* section-calendar */
 
@@ -225,12 +263,6 @@ input {
     line-height: 22px;
     font-weight: 400;
     color: $white;
-  }
-
-  &__bottom {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
   }
 
   &__month {
