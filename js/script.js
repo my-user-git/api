@@ -17,12 +17,13 @@
     return res.json();
   }).then(function (data) {
     data.result.forEach(item => {
-      item = item.date_range.split(' ');
+      item = item.date_range.split(' '); /*разбиваем полученную строку даты на массив элементов по пробелу */
       item.forEach(item => {
-        if (item.length === 4 && item.match(/\d+/g)) {
+        if (item.length === 4 && item.match(/\d+/g)) { /* ищем 4 цифры - это год */
           year = item;
         }
-        if ((item.length >= 3) && item.match(/[а-яёА-ЯЁ]/g)) {
+        /* ищем месяц и если год уже есть, кладём всё в массив месяцев планируемых мероприятий, определяем метки шкалы фильтра по месяцам*/
+        if ((item.length >= 3) && item.match(/[а-яёА-ЯЁ]/g) && year) {
           item = item.replace(/\я$/, 'ь');
           arrDate = {
             id: `${dateId}`,
@@ -35,19 +36,18 @@
       })
     })
 
-    // console.log(arrEvent);
-
-    monthRange();
 
     function monthRange() {
+      /* проверяем полученный массив на уникальность записей для шкалы */
 
       let monthsArr = [];
       arrEvent.forEach(x => {
-        // console.log(x.month);
         if (!monthsArr.some(y => JSON.stringify(y.month) === JSON.stringify(x.month))) {
           monthsArr.push(x);
         }
       })
+
+      /* рисуем ползунок с месяцами */
 
       const $footerrange = document.createElement('div');
       $footerrange.classList.add('footer__range');
@@ -67,19 +67,26 @@
 
       $footerrange.append($monthsList);
 
-      function changeRange() {
+      /* отслеживаем ползунок */
+
+      (function changeRange() {
         const $changerange = document.querySelector('#myRange');
         $changerange.addEventListener('change', (event) => {
           const arrRange = [];
+
+          /* сравниваем полученный номер позиции ползунка с базой уникальных месяцев и получаем месяц */
+
           const monthNumber = event.target.value;
           let dateEvents = monthsArr[monthNumber - 1].month;
+
+          /* для данных из API отдельно выделяем месяц приводим его к нужному падежу и сраниваем с месяц из базы ползунка
+          если совпадение есть кладём ВСЕ объекты из API в массив
+          очищаем область вывода и вызываем на основе этого массива прорисовку карточек */
 
           data.result.forEach(item => {
             let monthRange = item.date_range.split(' ');
             monthRange.forEach(monthRange => {
-              if (dateEvents.slice(-1) === 'ь' && dateEvents.lenght > 4) {
-                dateEvents = dateEvents.replace(/\ь$/, 'я');
-              }
+              monthRange = monthRange.replace(/\я$/, 'ь');
               if ((monthRange.length >= 3 && monthRange.match(/[а-яёА-ЯЁ]/g)) && monthRange === dateEvents) {
                 console.log(dateEvents)
                 arrRange.push(item);
@@ -89,9 +96,10 @@
             })
           })
         });
-      }
-      changeRange();
+      })()
     }
+
+    monthRange();
 
     initEvents(data.result.filter(el => !ignoreList.includes(el.uri.trim())));
   }).catch(function (err) {
