@@ -118,12 +118,11 @@
   function addItem(element) {
     let itemDate = document.createElement('p');
     let itemLi = document.createElement('li');
-    let itemIn = document.createElement('a');
     let itemLogo = document.createElement('img');
     let itemTtl = document.createElement('h2');
     let itemPlace = document.createElement('div');
     let itemText = document.createElement('p');
-    let itemLink = document.createElement('p');
+    let itemLink = document.createElement('a');
     let itemWrap = document.createElement('div');
     let itemTicket = document.createElement('p');
     let itemMore = document.createElement('p');
@@ -134,11 +133,8 @@
 
     itemLi.className = 'calendar__item';
 
-    itemIn.className = 'calendar__item-card';
-    itemIn.target = '_blank';
-    itemIn.href = element.uri;
-
     itemLink.className = 'calendar__item-link';
+    itemLink.setAttribute('href', element.uri);
     itemLink.target = '_blank';
     itemLink.innerHTML = element.uri;
 
@@ -164,8 +160,7 @@
     }
     itemPlace.textContent = element.location;
 
-    appendChildren(itemIn, [itemDate, itemLogo, itemTtl, itemText, itemPlace, itemLink, itemWrap]);
-    appendChildren(itemLi, [itemIn])
+    appendChildren(itemLi, [itemDate, itemLogo, itemTtl, itemText, itemPlace, itemLink, itemWrap]);
     appendChildren(itemWrap, [itemTicket, itemMore]);
 
     calendarList.appendChild(itemLi);

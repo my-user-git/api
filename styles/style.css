@@ -500,17 +500,14 @@ input {
 }
 .calendar__item {
   display: flex;
-  height: auto;
-  border-radius: 10px;
-  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.12);
-}
-.calendar__item-card {
-  display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: flex-start;
   width: 100%;
+  height: auto;
   padding: 25px 43px 39px 30px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.12);
   transition: transform ease-in-out 0.5s;
 }
 .calendar__item-date {
