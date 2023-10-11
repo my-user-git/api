@@ -180,6 +180,7 @@ input {
     text-decoration: underline;
     word-break: break-all;
     background: url(../images/icon-link.svg) left center transparent no-repeat;
+    transition: opacity ease-in-out .3s;
   }
 
   &__item-wrap {
@@ -190,6 +191,7 @@ input {
   }
 
   &__item-ticket {
+    position: relative;
     padding: 8px 20px;
     font-family: $TravelsDemiBold, $fontStandart;
     font-size: 18px;
@@ -197,15 +199,18 @@ input {
     font-weight: 500;
     color: $white;
     background-color: $lilacD4;
+    transition: background-color ease-in-out .3s;
   }
 
   &__item-more {
+    display: block;
     font-family: $TravelsDemiBold, $fontStandart;
     font-size: 18px;
     line-height: 22px;
     font-weight: 500;
     color: $lilacD4;
     text-decoration: underline;
+    transition: text-decoration ease-in-out .3s;
   }
 }
 

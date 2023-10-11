@@ -124,8 +124,8 @@
     let itemText = document.createElement('p');
     let itemLink = document.createElement('a');
     let itemWrap = document.createElement('div');
-    let itemTicket = document.createElement('p');
-    let itemMore = document.createElement('p');
+    let itemTicket = document.createElement('a');
+    let itemMore = document.createElement('a');
 
     itemWrap.className = 'calendar__item-wrap';
     itemDate.className = 'calendar__item-date';
@@ -139,9 +139,15 @@
     itemLink.innerHTML = element.uri;
 
     itemTicket.className = 'calendar__item-ticket';
+    itemTicket.setAttribute('href', element.uri);
+    itemTicket.target = '_blank';
+    itemTicket.innerHTML = element.uri;
     itemTicket.textContent = 'Купить билет';
 
     itemMore.className = 'calendar__item-more';
+    itemMore.setAttribute('href', element.uri);
+    itemMore.target = '_blank';
+    itemMore.innerHTML = element.uri;
     itemMore.textContent = 'Подробнее';
 
     itemLogo.className = 'calendar__item-logo';
