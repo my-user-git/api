@@ -7,7 +7,7 @@
     'https://knowledgeconf.ru/2022',
     'http://devtechconf.ru/2022'
   ];
-  const calendarList = document.querySelector('.calendar__in');
+  const calendarList = document.querySelector('.calendar__list');
   const arrEvent = [];
   let dateId = 0,
     arrDate = {},
@@ -116,23 +116,25 @@
   }
 
   function addItem(element) {
-    // let item = document.createElement('div');
-    let itemDate = document.createElement('div');
+    let itemDate = document.createElement('p');
+    let itemLi = document.createElement('li');
     let itemIn = document.createElement('a');
     let itemLogo = document.createElement('img');
-    let itemTtl = document.createElement('div');
+    let itemTtl = document.createElement('h2');
     let itemPlace = document.createElement('div');
-    let itemText = document.createElement('div');
-    let itemLink = document.createElement('div');
+    let itemText = document.createElement('p');
+    let itemLink = document.createElement('p');
     let itemWrap = document.createElement('div');
-    let itemTicket = document.createElement('div');
-    let itemMore = document.createElement('div');
+    let itemTicket = document.createElement('p');
+    let itemMore = document.createElement('p');
 
     itemWrap.className = 'calendar__item-wrap';
     itemDate.className = 'calendar__item-date';
     itemDate.innerHTML = element.date_range;
 
-    itemIn.className = 'calendar__item-in';
+    itemLi.className = 'calendar__item';
+
+    itemIn.className = 'calendar__item-card';
     itemIn.target = '_blank';
     itemIn.href = element.uri;
 
@@ -163,9 +165,10 @@
     itemPlace.textContent = element.location;
 
     appendChildren(itemIn, [itemDate, itemLogo, itemTtl, itemText, itemPlace, itemLink, itemWrap]);
+    appendChildren(itemLi, [itemIn])
     appendChildren(itemWrap, [itemTicket, itemMore]);
 
-    calendarList.appendChild(itemIn);
+    calendarList.appendChild(itemLi);
   }
 
   function appendChildren(element, items) {
