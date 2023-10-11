@@ -116,17 +116,21 @@
   }
 
   function addItem(element) {
-    let itemDate = document.createElement('p');
     let itemLi = document.createElement('li');
+    let itemWrapTop = document.createElement('div');
+    let itemDate = document.createElement('p');
     let itemLogoLink = document.createElement('a');
     let itemLogo = document.createElement('img');
     let itemTtl = document.createElement('h2');
-    let itemPlace = document.createElement('div');
     let itemText = document.createElement('p');
+    let itemWrapPlace = document.createElement('div');
+    let itemPlace = document.createElement('p');
     let itemLink = document.createElement('a');
     let itemWrap = document.createElement('div');
     let itemTicket = document.createElement('a');
     let itemMore = document.createElement('a');
+
+    itemWrapTop.className = 'calendar__item-wrap-top';
 
     itemWrap.className = 'calendar__item-wrap';
     itemDate.className = 'calendar__item-date';
@@ -165,14 +169,18 @@
     itemText.className = 'calendar__item-text';
     itemText.textContent = element.brief;
 
+    itemWrapPlace.className = 'calendar__item-wrap-place';
+
     itemPlace.className = 'calendar__item-place';
     if (element.location.includes('отменена') || element.location.includes('объединена')) {
       itemPlace.classList.add('calendar__item-place_cancelled');
     }
     itemPlace.textContent = element.location;
 
-    appendChildren(itemLi, [itemDate, itemLogoLink, itemTtl, itemText, itemPlace, itemLink, itemWrap]);
+    appendChildren(itemLi, [itemWrapTop, itemWrapPlace, itemWrap]);
+    appendChildren(itemWrapTop, [itemDate, itemLogoLink, itemTtl]);
     appendChildren(itemLogoLink, [itemLogo]);
+    appendChildren(itemWrapPlace, [itemText, itemPlace, itemLink]);
     appendChildren(itemWrap, [itemTicket, itemMore]);
 
     calendarList.appendChild(itemLi);

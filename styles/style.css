@@ -537,9 +537,10 @@ input {
   gap: 3.6rem;
 }
 .calendar__item {
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: 0.5fr min-content 1fr 0.6fr min-content min-content min-content;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
   width: 100%;
   height: auto;
   padding: 25px 43px 39px 30px;
@@ -548,6 +549,7 @@ input {
   transition: transform ease-in-out 0.5s;
 }
 .calendar__item-date {
+  height: 44px;
   margin-bottom: 19px;
   font-family: "TT Travels DemiBold", "Arial, sans-serif";
   font-size: 18px;
@@ -557,15 +559,15 @@ input {
 }
 .calendar__item-logo {
   width: auto;
-  height: 90px;
-  margin-bottom: 15px;
+  height: 100%;
 }
 .calendar__item-logo-link {
+  display: block;
+  height: 90px;
+  margin-bottom: 19.5px;
   transition: opacity ease-in-out 0.3s;
 }
 .calendar__item-ttl {
-  height: 100%;
-  margin-bottom: 15px;
   font-family: "TT Travels DemiBold", "Arial, sans-serif";
   font-size: 24px;
   line-height: 29px;
@@ -573,6 +575,8 @@ input {
   color: #000;
 }
 .calendar__item-place {
+  display: flex;
+  align-items: center;
   margin-bottom: 12px;
   padding: 0 0 0 20px;
   font-size: 14px;
@@ -589,7 +593,8 @@ input {
   color: #000;
 }
 .calendar__item-link {
-  margin-bottom: 25px;
+  display: flex;
+  align-items: center;
   padding: 0 0 0 20px;
   font-size: 14px;
   line-height: 17px;
@@ -605,6 +610,13 @@ input {
   justify-content: space-between;
   align-items: center;
   width: 100%;
+}
+.calendar__item-wrap-top {
+  margin-bottom: 15px;
+}
+.calendar__item-wrap-place {
+  margin-top: auto;
+  margin-bottom: 25px;
 }
 .calendar__item-ticket {
   position: relative;

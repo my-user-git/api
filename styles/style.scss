@@ -115,13 +115,13 @@ input {
   }
 
   &__item {
-    // display: flex;
-    // flex-direction: column;
-    // justify-content: space-between;
-    // align-items: flex-start;
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: .5fr min-content 1fr .6fr min-content min-content min-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    // display: grid;
+    // grid-template-columns: 1fr;
+    // grid-template-rows: auto;
     width: 100%;
     height: auto;
     padding: 25px 43px 39px 30px;
@@ -131,6 +131,7 @@ input {
   }
 
   &__item-date {
+    height: 44px;
     margin-bottom: 19px;
     font-family: $TravelsDemiBold, $fontStandart;
     font-size: 18px;
@@ -141,17 +142,17 @@ input {
 
   &__item-logo {
     width: auto;
-    height: 90px;
-    margin-bottom: 15px;
+    height: 100%;
 
     &-link {
+      display: block;
+      height: 90px;
+      margin-bottom: 19.5px;
       transition: opacity ease-in-out .3s;
     }
   }
 
   &__item-ttl {
-    height: 100%;
-    margin-bottom: 15px;
     font-family: $TravelsDemiBold, $fontStandart;
     font-size: 24px;
     line-height: 29px;
@@ -160,6 +161,8 @@ input {
   }
 
   &__item-place {
+    display: flex;
+    align-items: center;
     margin-bottom: 12px;
     padding: 0 0 0 20px;
     font-size: 14px;
@@ -178,7 +181,8 @@ input {
   }
 
   &__item-link {
-    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
     padding: 0 0 0 20px;
     font-size: 14px;
     line-height: 17px;
@@ -195,6 +199,15 @@ input {
     justify-content: space-between;
     align-items: center;
     width: 100%;
+
+    &-top {
+      margin-bottom: 15px;
+    }
+
+    &-place {
+      margin-top: auto;
+      margin-bottom: 25px;
+    }
   }
 
   &__item-ticket {
