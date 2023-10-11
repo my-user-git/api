@@ -72,19 +72,16 @@
         $changerange.addEventListener('change', (event) => {
           const arrRange = [];
           const monthNumber = event.target.value;
-
           let dateEvents = monthsArr[monthNumber - 1].month;
-
 
           data.result.forEach(item => {
             let monthRange = item.date_range.split(' ');
             monthRange.forEach(monthRange => {
-              console.log(dateEvents.slice(-1));
-              if (dateEvents.slice(-1) !== 'я') {
+              if (dateEvents.slice(-1) === 'ь' && dateEvents.lenght > 4) {
                 dateEvents = dateEvents.replace(/\ь$/, 'я');
               }
               if ((monthRange.length >= 3 && monthRange.match(/[а-яёА-ЯЁ]/g)) && monthRange === dateEvents) {
-                // console.log(item);
+                console.log(dateEvents)
                 arrRange.push(item);
               }
               calendarList.innerHTML = '';
