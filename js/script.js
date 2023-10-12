@@ -111,21 +111,9 @@
 
   function initEvents(data) {
     console.log(data);
-    // data.forEach(function (el) {
-    //   return addItem(el);
-    // });
-
-    const subArrays = [];
-    while(data.length > 0) {
-    const subArray = data.splice(0, 4);
-    subArrays.push(subArray);
-    }
-    console.log(subArrays);
-
-    subArrays.forEach(item => {
-      console.log(item);
-      addItem(item);
-    })
+    data.forEach(function (el) {
+      return addItem(el);
+    });
   }
 
   function addItem(element) {
