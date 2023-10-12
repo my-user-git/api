@@ -111,79 +111,94 @@
 
   function initEvents(data) {
     console.log(data);
-    data.forEach(function (el) {
-      return addItem(el);
-    });
+    // data.forEach(function (el) {
+    //   return addItem(el);
+    // });
+
+    const subArrays = [];
+    while(data.length > 0) {
+    const subArray = data.splice(0, 4);
+    subArrays.push(subArray);
+    }
+    console.log(subArrays);
+
+    subArrays.forEach(item => {
+      console.log(item);
+      addItem(item);
+    })
   }
 
   function addItem(element) {
     let itemLi = document.createElement('li');
-    let itemWrapTop = document.createElement('div');
-    let itemDate = document.createElement('p');
-    let itemLogoLink = document.createElement('a');
-    let itemLogo = document.createElement('img');
-    let itemTtl = document.createElement('h2');
-    let itemText = document.createElement('p');
-    let itemWrapPlace = document.createElement('div');
-    let itemPlace = document.createElement('p');
-    let itemLink = document.createElement('a');
-    let itemWrap = document.createElement('div');
-    let itemTicket = document.createElement('a');
-    let itemMore = document.createElement('a');
 
-    itemWrapTop.className = 'calendar__item-wrap-top';
+    element.forEach(item => {
+      let itemWrapTop = document.createElement('div');
+      let itemDate = document.createElement('p');
+      let itemLogoLink = document.createElement('a');
+      let itemLogo = document.createElement('img');
+      let itemTtl = document.createElement('h2');
+      let itemText = document.createElement('p');
+      // let itemWrapPlace = document.createElement('div');
+      let itemPlace = document.createElement('p');
+      let itemLink = document.createElement('a');
+      let itemWrap = document.createElement('div');
+      let itemTicket = document.createElement('a');
+      let itemMore = document.createElement('a');
 
-    itemWrap.className = 'calendar__item-wrap';
-    itemDate.className = 'calendar__item-date';
-    itemDate.innerHTML = element.date_range;
+      itemWrapTop.className = 'calendar__item-wrap-top';
 
-    itemLi.className = 'calendar__item';
+      itemWrap.className = 'calendar__item-wrap';
+      itemDate.className = 'calendar__item-date';
+      itemDate.innerHTML = item.date_range;
 
-    itemLink.className = 'calendar__item-link';
-    itemLink.setAttribute('href', element.uri);
-    itemLink.target = '_blank';
-    itemLink.innerHTML = element.uri;
+      itemLi.className = 'calendar__item';
 
-    itemTicket.className = 'calendar__item-ticket';
-    itemTicket.setAttribute('href', element.uri);
-    itemTicket.target = '_blank';
-    itemTicket.innerHTML = element.uri;
-    itemTicket.textContent = 'Купить билет';
+      itemLink.className = 'calendar__item-link';
+      itemLink.setAttribute('href', item.uri);
+      itemLink.target = '_blank';
+      itemLink.innerHTML = item.uri;
 
-    itemMore.className = 'calendar__item-more';
-    itemMore.setAttribute('href', element.uri);
-    itemMore.target = '_blank';
-    itemMore.innerHTML = element.uri;
-    itemMore.textContent = 'Подробнее';
+      itemTicket.className = 'calendar__item-ticket';
+      itemTicket.setAttribute('href', item.uri);
+      itemTicket.target = '_blank';
+      itemTicket.innerHTML = item.uri;
+      itemTicket.textContent = 'Купить билет';
 
-    itemLogoLink.className = 'calendar__item-logo-link';
-    itemLogoLink.setAttribute('href', element.uri);
-    itemLogoLink.target = '_blank';
+      itemMore.className = 'calendar__item-more';
+      itemMore.setAttribute('href', item.uri);
+      itemMore.target = '_blank';
+      itemMore.innerHTML = item.uri;
+      itemMore.textContent = 'Подробнее';
 
-    itemLogo.className = 'calendar__item-logo';
-    itemLogo.src = element.logo;
-    itemLogo.alt = `Лого ${element.name}`;
+      itemLogoLink.className = 'calendar__item-logo-link';
+      itemLogoLink.setAttribute('href', item.uri);
+      itemLogoLink.target = '_blank';
 
-    itemTtl.className = 'calendar__item-ttl';
-    itemTtl.textContent = element.name;
+      itemLogo.className = 'calendar__item-logo';
+      itemLogo.src = item.logo;
+      itemLogo.alt = `Лого ${item.name}`;
 
-    itemText.className = 'calendar__item-text';
-    itemText.textContent = element.brief;
+      itemTtl.className = 'calendar__item-ttl';
+      itemTtl.textContent = item.name;
 
-    itemWrapPlace.className = 'calendar__item-wrap-place';
+      itemText.className = 'calendar__item-text';
+      itemText.textContent = item.brief;
 
-    itemPlace.className = 'calendar__item-place';
-    if (element.location.includes('отменена') || element.location.includes('объединена')) {
-      itemPlace.classList.add('calendar__item-place_cancelled');
-    }
-    itemPlace.textContent = element.location;
+      // itemWrapPlace.className = 'calendar__item-wrap-place';
 
-    appendChildren(itemWrapTop, [itemDate, itemLogoLink, itemTtl]);
-    appendChildren(itemLogoLink, [itemLogo]);
-    appendChildren(itemWrapPlace, [itemText, itemPlace, itemLink]);
-    appendChildren(itemWrap, [itemTicket, itemMore]);
+      itemPlace.className = 'calendar__item-place';
+      // if (item.location.includes('отменена') || item.location.includes('объединена')) {
+      //   itemPlace.classList.add('calendar__item-place_cancelled');
+      // }
+      itemPlace.textContent = item.location;
 
-    appendChildren(itemLi, [itemWrapTop, itemWrapPlace, itemWrap]);
+      appendChildren(itemWrapTop, [itemDate, itemLogoLink, itemTtl]);
+      appendChildren(itemLogoLink, [itemLogo]);
+      // appendChildren(itemWrapPlace, [itemText, itemPlace, itemLink]);
+      appendChildren(itemWrap, [itemTicket, itemMore]);
+
+      appendChildren(itemLi, [itemWrapTop, itemText, itemPlace, itemLink, itemWrap]);
+    })
 
     calendarList.appendChild(itemLi);
   }
