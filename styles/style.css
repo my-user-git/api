@@ -533,20 +533,18 @@ input {
 .calendar__list {
   position: relative;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: 1fr;
   gap: 3.6rem;
 }
 .calendar__item {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: flex-start;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: max-content 1fr min-content max-content max-content;
+  grid-auto-flow: column;
+  -moz-column-gap: 3.6rem;
+       column-gap: 3.6rem;
   width: 100%;
   height: auto;
-  padding: 25px 43px 39px 30px;
-  border-radius: 10px;
-  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.12);
-  transition: transform ease-in-out 0.5s;
 }
 .calendar__item-date {
   height: 44px;
@@ -587,14 +585,17 @@ input {
 }
 .calendar__item-text {
   margin-bottom: 27px;
+  padding: 0 43px 0 30px;
   font-size: 16px;
   line-height: 19px;
   font-weight: 400;
   color: #000;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.12);
 }
 .calendar__item-link {
   display: flex;
   align-items: center;
+  margin-bottom: 15px;
   padding: 0 0 0 20px;
   font-size: 14px;
   line-height: 17px;
@@ -613,9 +614,14 @@ input {
 }
 .calendar__item-wrap-top {
   margin-bottom: 15px;
+  padding: 25px 43px 0 30px;
+  border-radius: 10px 10px 0 0;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.12);
 }
 .calendar__item-wrap-place {
-  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   margin-bottom: 25px;
 }
 .calendar__item-ticket {
