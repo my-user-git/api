@@ -110,9 +110,17 @@
   });
 
   function initEvents(data) {
+    console.log(data);
+
     data.forEach(function (el) {
       return addItem(el);
     });
+    const subArrays = [];
+    while(data.length > 0) {
+    const subArray = data.splice(0, 4);
+    subArrays.push(subArray);
+    }
+    console.log(subArrays);
   }
 
   function addItem(element) {
@@ -177,11 +185,12 @@
     }
     itemPlace.textContent = element.location;
 
-    appendChildren(itemLi, [itemWrapTop, itemWrapPlace, itemWrap]);
     appendChildren(itemWrapTop, [itemDate, itemLogoLink, itemTtl]);
     appendChildren(itemLogoLink, [itemLogo]);
     appendChildren(itemWrapPlace, [itemText, itemPlace, itemLink]);
     appendChildren(itemWrap, [itemTicket, itemMore]);
+
+    appendChildren(itemLi, [itemWrapTop, itemWrapPlace, itemWrap]);
 
     calendarList.appendChild(itemLi);
   }
